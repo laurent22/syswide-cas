@@ -1,4 +1,7 @@
-# syswide-cas
+<div align="center"><img src="https://capriza.github.io/images/logos/logos-cert.svg" height="128" /></div>
+
+syswide-cas
+===
 
 Enable node to use custom certificate authorities in conjunction with the bundled root CAs.
 
