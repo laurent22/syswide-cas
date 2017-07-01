@@ -3,14 +3,18 @@
 syswide-cas
 ===
 
-Enable node to use custom certificate authorities in conjunction with the bundled root CAs.
+nable node to use custom certificate authorities _in conjunction_ with the bundled root CAs.
 
-Node does not support system-wide installed trusted certificate authorities. It is only possible to specify a custom 
+Up until version 7, node did not support system-wide installed trusted certificate authorities. It was only possible to specify a custom 
 CA via the `ca` option in the `tls` and `https` modules, or fallback to using the bundled list of root CAs that 
-node is compiled with.
+node is compiled with. 
 
-This module enables loading custom CAs located in the file /etc/ssl/ca-node.pem _in conjunction with_ 
-the node bundled root CAs.
+Starting with node 7, it's possible to set the `NODE_EXTRA_CA_CERTS` environment variable to a single file containing additional root CA
+to trust, however it still does not allow programatic addition of several directories and files containing root CAs.
+
+This module enables loading custom CAs to be used _in conjunction_ with the node bundled root CAs.
+syswide-cas will auto load root CAs is from the file `/etc/ssl/ca-node.pem` if it exists.
+
 
 ## Installation
 
