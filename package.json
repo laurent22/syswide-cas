@@ -1,17 +1,11 @@
 {
   "name": "syswide-cas",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Enable node to use system wide certificate authorities in conjunction with the bundled root CAs",
-  "keywords": [
-    "tls",
-    "ca",
-    "root"
-  ],
+  "keywords": ["tls", "ca", "root"],
   "homepage": "https://github.com/capriza/syswide-cas/",
   "author": "Capriza Inc. <backend@capriza.com>",
-  "maintainers"    : [
-    "Nadav Fischer <nadav.fischer@capriza.com>"
-  ],
+  "maintainers": ["Nadav Fischer <nadav.fischer@capriza.com>"],
   "main": "index.js",
   "repository": {
     "type": "git",
