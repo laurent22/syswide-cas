@@ -3,7 +3,7 @@
 syswide-cas
 ===
 
-nable node to use custom certificate authorities _in conjunction_ with the bundled root CAs.
+Enable node to use custom certificate authorities _in conjunction_ with the bundled root CAs.
 
 Up until version 7, node did not support system-wide installed trusted certificate authorities. It was only possible to specify a custom 
 CA via the `ca` option in the `tls` and `https` modules, or fallback to using the bundled list of root CAs that 
