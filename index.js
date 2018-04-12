@@ -18,24 +18,20 @@ const rootSecureContext = tls.createSecureContext ? tls.createSecureContext() : 
 
 function addDefaultCA(file) {
   try {
-    var cert;
+    var cert, match;
     var content = fs.readFileSync(file, { encoding: "ascii" }).trim();
-    if (content.indexOf("-----BEGIN CERTIFICATE-----") === 0) {
-      var certs = content.split("-----END CERTIFICATE-----");
-      for (var i = 0; i < certs.length; ++i) {
-        cert = certs[i].trim();
-        if (cert.length > 0) {
-          cert += "\n-----END CERTIFICATE-----\n";
-          rootCAs.push(cert);
-          // this will add the cert to the root certificate authorities list
-          // which will be used by all subsequent secure contexts with root CAs.
-          // this only works up to node 6. node 7 and up it has no affect.
-          if (!useTrap) {
-            rootSecureContext.context.addCACert(cert);
-          }
-        }
+    var regex = /-----BEGIN CERTIFICATE-----\n[\s\S]+?\n-----END CERTIFICATE-----/g;
+    var results = content.match(regex);
+    results.forEach(function(match) {
+      var cert = match.trim();
+      rootCAs.push(cert);
+      // this will add the cert to the root certificate authorities list
+      // which will be used by all subsequent secure contexts with root CAs.
+      // this only works up to node 6. node 7 and up it has no affect.
+      if (!useTrap) {
+        rootSecureContext.context.addCACert(cert);
       }
-    }
+    });
   } catch (e) {
     if (e.code !== "ENOENT") {
       console.log("failed reading file " + file + ": " + e.message);
