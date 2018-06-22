@@ -13,7 +13,7 @@ Starting with node 7, it's possible to set the `NODE_EXTRA_CA_CERTS` environment
 to trust, however it still does not allow programatic addition of several directories and files containing root CAs.
 
 This module enables loading custom CAs to be used _in conjunction_ with the node bundled root CAs.
-syswide-cas will auto load root CAs is from the file `/etc/ssl/ca-node.pem` if it exists.
+syswide-cas will auto load root CAs from the file `/etc/ssl/ca-node.pem` if it exists.
 
 
 ## Installation
