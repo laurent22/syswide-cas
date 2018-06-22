@@ -20,8 +20,10 @@ function addDefaultCA(file) {
   try {
     var cert, match;
     var content = fs.readFileSync(file, { encoding: "ascii" }).trim();
+    content = content.replace(/\r\n/g, '\n'); // Handles certificates that have been created in Windows
     var regex = /-----BEGIN CERTIFICATE-----\n[\s\S]+?\n-----END CERTIFICATE-----/g;
     var results = content.match(regex);
+    if (!results) throw new Error('Could not parse certificate');
     results.forEach(function(match) {
       var cert = match.trim();
       rootCAs.push(cert);
