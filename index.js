@@ -9,7 +9,7 @@ var useTrap = false;
 const parts = process.versions.node.split(".");
 const major = parseInt(parts[0]);
 const minor = parseInt(parts[1]);
-if (major > 7 || (major == 7 && minor >= 2) || (major === 6 && minor >= 11)) {
+if (major > 7 || (major == 7 && minor >= 2) || (major === 6 && minor >= 10)) {
   useTrap = true;
 }
 
