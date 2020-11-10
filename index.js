@@ -86,6 +86,7 @@ if (useTrap) {
   // trap the createSecureContext method and inject custom root CAs whenever invoked
   const origCreateSecureContext = tls.createSecureContext;
   tls.createSecureContext = function(options) {
+    options = options || {};
     var c = origCreateSecureContext.apply(null, arguments);
     if (!options.ca && rootCAs.length > 0) {
       rootCAs.forEach(function(ca) {
